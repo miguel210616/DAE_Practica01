@@ -1,0 +1,10 @@
+<h1>{{ region.nombre_region }}</h1>
+
+<ul>
+    {% for opcion in region.candidato_set.all %}
+        <li>{{ opcion.nombre_candidato }} -- {{opcion.votos}} voto{{ opcion.votos|pluralize }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'votacion:urna' region.id %}">Votar de nuevo</a>
+<a href="{% url 'votacion:index' %}">Ver preguntas</a>

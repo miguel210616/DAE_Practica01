@@ -1,0 +1,13 @@
+<h1>Votación por Regiones</h1>
+
+{% if latest_question_list %}
+    <ul>
+        {% for region in latest_question_list %}
+            <li>
+                <a href="/votacion/{{ region.id }}/">{{ region.nombre_region }}</a>
+            </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay registros.</p>
+{% endif %}

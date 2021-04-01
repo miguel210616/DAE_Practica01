@@ -1,0 +1,15 @@
+<h1>{{ region.nombre_region }}</h1>
+
+{% if error_message %} <p><strong>{{error_message}}</strong></p>{%endif%}
+
+<form action="{% url 'votacion:votar' region.id %}" method="post">
+
+{% csrf_token %}
+{% for opcion in region.candidato_set.all %}
+    <input type="radio" name="candidato" id="opcion{{forloop.counter}}" value="{{opcion.id}}">
+    <label for="opcion{{forloop.counter}}">{{opcion.nombre_candidato}}</label><br>
+{% endfor %}
+<input type="submit" value="Votar">
+</form>
+<br/>
+<a href="{% url 'votacion:index' %}">Ver preguntas</a>
